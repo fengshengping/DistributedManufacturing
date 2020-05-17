@@ -1,0 +1,60 @@
+<div class="row mapContainer">
+     <div class="col-2 p-2">
+          <button *ngFor="let mapapp of mapapps"
+                class="btn btn-outline-primary btn-block"
+                [class.active]="mapapp == selectedApp" (click)="changeMapapp(mapapp)">
+              {{mapapp.name}}
+          </button>         
+          <div class="container" id="optAddGroup">
+               <div *ngIf="selectedApp.id==1">
+                    <div class="radio">
+                         <label for="optAddCenter" class="radioLabelMid">
+                              <input type="radio" name="optAddCenter" id="optAddCenter" [(ngModel)]="optAddCenter" [value]="true"> Center Candidate
+                         </label>
+                    </div>
+                    <div class="radio">
+                         <label for="optAddStorage" class="radioLabelMid">
+                              <input type="radio" name="optAddCenter" id="optAddStorage" [(ngModel)]="optAddCenter" [value]="false"> Add Storage
+                         </label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                         <div class="input-group-prepend">
+                           <span class="input-group-text" id="inputGroup-sizing-sm">Max # of Centers</span>
+                         </div>
+                         <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [max]="centerCnt" [(ngModel)]="maxCenterNumber" >
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                         <div class="input-group-prepend">
+                           <span class="input-group-text" id="inputGroup-sizing-sm">Minimum Capacity</span>
+                         </div>
+                         <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [min]="minCap" [(ngModel)]="minCapacity" >
+                    </div>
+               </div>  
+               <div *ngIf="selectedApp.id==2">
+                    <div class="radio">
+                         <label for="optAddWorkshop" class="radioLabelMid">
+                              <input type="radio" name="optAddWorkshop" id="optAddWorkshop" [(ngModel)]="optAddWorkshop" [value]="true"> Add Workshop
+                         </label>
+                    </div>
+                    <div class="radio">
+                         <label for="optAddCuttingCenter" class="radioLabelMid">
+                              <input type="radio" name="optAddWorkshop" id="optAddCuttingCenter" [(ngModel)]="optAddWorkshop" [value]="false"> Add Cutting Center
+                         </label>
+                    </div>
+               </div>     
+               <div id="btnOptimize"></div>            
+               <button class="btn btn-block btn-danger m-t-3" (click)="onOptimize()">
+                    Optimize
+               </button>                           
+          </div>
+     </div>
+     <div class="col-10 p-2">
+          <div class="map"
+               leaflet 
+               (leafletMapReady)="onMapReady($event)"
+               (leafletClick)="onClick($event)"
+               [leafletLayersControl]="layersControl"
+               [leafletOptions]="options">
+          </div>
+     </div>
+</div>
