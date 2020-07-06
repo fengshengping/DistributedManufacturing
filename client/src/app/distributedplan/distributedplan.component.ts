@@ -39,7 +39,7 @@ export class DistributedPlanComponent implements OnInit {
     
     options = {
         layers: [ this.streetMaps],
-        zoom: 8,
+        zoom: 9,
         center: latLng(46.879966, -121.726909)
     };
     
