@@ -6,7 +6,7 @@
               {{mapapp.name}}
           </button>         
           <div class="container" id="optAddGroup">
-               <div *ngIf="selectedApp.id==1">
+               <div *ngIf="selectedApp.id===1">
                     <div class="radio">
                          <label for="optAddCenter" class="radioLabelMid">
                               <input type="radio" name="optAddCenter" id="optAddCenter" [(ngModel)]="optAddCenter" [value]="true"> Center Candidate
@@ -30,7 +30,7 @@
                          <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [min]="minCap" [(ngModel)]="minCapacity" >
                     </div>
                </div>  
-               <div *ngIf="selectedApp.id==2">
+               <div *ngIf="selectedApp.id===2">
                     <div class="radio">
                          <label for="optAddWorkshop" class="radioLabelMid">
                               <input type="radio" name="optAddWorkshop" id="optAddWorkshop" [(ngModel)]="optAddWorkshop" [value]="true"> Add Workshop
